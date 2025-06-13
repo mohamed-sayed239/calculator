@@ -1,0 +1,453 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+  body[data-theme="light"] {
+    background: hsl(0, 0%, 90%);
+    color: hsl(60, 10%, 19%);
+}
+
+body[data-theme="dark"] {
+    background: hsl(222, 26%, 31%);
+    color: hsl(221, 14%, 31%);
+}
+
+body[data-theme="blue"] {
+    background: hsl(268, 75%, 9%);
+    color: hsl(52, 100%, 62%);
+}
+
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.head h2 {
+    font-size: 24px;
+}
+
+/* زر التبديل بثلاث حالات */
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 25px;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: hsl(223, 31%, 20%);
+    transition: 0.3s;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5px;
+}
+
+/* الدائرة المتحركة */
+.slider span {
+    width: 15px;
+    height: 15px;
+    background: hsl(6, 63%, 50%);
+    border-radius: 50%;
+    transition: 0.3s;
+    position: absolute;
+}
+
+/* تحديد مواقع الدائرة حسب الوضع */
+.slider[data-position="0"] span {
+    left: 5px;
+    background:  hsl(25, 98%, 40%);
+}
+
+.slider[data-position="1"] span {
+    left: 20px;
+    background: hsl(6, 63%, 50%);
+
+}
+
+.slider[data-position="2"] span {
+    left: 40px;
+    background:hsl(176, 100%, 44%);
+}
+
+.slider[data-position="0"] {
+    background: hsla(0, 0%, 38%, 0.116);
+}
+
+.slider[data-position="1"] {
+    background: hsla(0, 0%, 38%, 0.116);
+}
+
+.slider[data-position="2"] {
+    background: hsla(0, 0%, 38%, 0.116);
+}
+
+
+  
+body{
+  background:  hsl(224, 27%, 34%);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+}
+.main-contanier{
+    width: 600px;
+    height: 100%;
+    margin-top: 50px;
+}
+.head{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+.head h2{
+    color: #ffffff;
+    font-size: 30px ;
+    font-weight: bold;
+}
+body[data-theme="light"] .head h2{   
+    color: hsl(60, 10%, 19%);
+}
+
+body[data-theme="dark"] .head h2{
+    color: hsl(221, 14%, 31%);
+}
+
+body[data-theme="blue"] .head h2{
+    color: hsl(52, 100%, 62%);
+}
+
+.inp input{
+    padding: 40px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    width: 100%;
+    font-size: 50px;
+    font-weight: 900;
+}
+
+body[data-theme="light"] .inp input{
+    background: hsl(0, 0%, 100%)!important;
+    color: hsl(0, 0%, 0%)!important;
+}
+
+body[data-theme="dark"] .inp input{
+    background:  hsl(225, 21%, 49%)!important;
+    color: hsl(0, 0%, 100%)!important;
+}
+
+body[data-theme="blue"] .inp input{
+    background: hsl(281, 25%, 37%)!important;
+    color: hsl(52, 100%, 62%)!important;
+}
+.content{
+    background:hsla(223, 31%, 20%, 0.658) ;
+    margin: 30px 0;
+    padding: 40px;
+    border-radius: 20px;
+}
+body[data-theme="light"] .content{
+    background:hsl(0, 0%, 93%);
+    color: hsl(60, 10%, 19%);
+}
+
+body[data-theme="dark"] .content{
+    background:  hsl(225, 21%, 49%);
+    color: hsl(221, 14%, 31%);
+}
+
+body[data-theme="blue"] .content{
+    background: hsl(281, 89%, 26%);
+    color: hsl(52, 100%, 62%);
+}
+
+.Calculator{
+    display: grid;
+    grid-template-columns:repeat(4,1fr);
+    gap: 20px;
+}
+.Calculator .btn{
+    background: #f3ecec;
+    color: black;
+    border-radius: 5px;
+    border: none;
+    font-size: 30px;
+    font-weight: 900;
+    padding: 20px 0;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 3);
+}
+body[data-theme="light"] .Calculator .btn{   
+    color: hsl(60, 10%, 19%);
+    background:hsl(45, 7%, 89%);
+    box-shadow: 0 8px 12px  hsl(35, 11%, 61%);
+}
+
+body[data-theme="dark"] .Calculator .btn{
+    color: hsl(221, 14%, 31%);
+    background:hsl(30, 25%, 89%);
+    box-shadow: 0 8px 12px  hsl(28, 16%, 65%);
+}
+
+body[data-theme="blue"] .Calculator .btn{
+    color: hsl(52, 100%, 62%);
+    background: hsl(268, 47%, 21%);
+    box-shadow: 0 8px 12px  hsl(290, 70%, 36%);
+}
+.Calculator .btn:hover{
+  background: #ffffff;
+  transform: scale(1.05);
+  transition-delay: 0.2s;
+}
+.del{
+    background: hsl(225, 31%, 62%);
+    color: hsl(60, 10%, 19%);
+    border-radius: 5px;
+    border: none;
+    font-size: 30px;
+    font-weight: 900;
+    padding: 20px 0;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 3);
+}
+body[data-theme="light"] del{   
+    color: hsl(60, 10%, 19%);
+    background:hsl(185, 42%, 37%);
+    box-shadow: 0 8px 15px  hsl(185, 58%, 25%);
+    
+}
+
+body[data-theme="dark"] del{
+    color: hsl(221, 14%, 31%);
+    background:hsl(225, 21%, 49%);
+    box-shadow: 0 8px 15px  hsl(224, 28%, 35%);
+}
+
+body[data-theme="blue"] del{
+    color: hsl(52, 100%, 62%);
+    background:  hsl(281, 89%, 26%);
+    box-shadow:0 8px 15px  hsl(285, 91%, 52%)
+}
+.del:hover{
+  background: #81a6eb;
+  transform: scale(1.05);
+  transition-delay: 0.2s;
+}
+body[data-theme="light"] del:hover{   
+    color: hsl(60, 10%, 19%);
+    background:hsl(185, 34%, 35%);
+    box-shadow: 0 10px 15px  hsl(185, 58%, 25%);
+    
+}
+
+body[data-theme="dark"] del:hover{
+    color: hsl(221, 14%, 31%);
+    background:hsl(225, 18%, 31%);
+    box-shadow: 0 10px 15px  hsl(224, 28%, 35%);
+}
+
+body[data-theme="blue"] del:hover{
+    color: hsl(52, 100%, 62%);
+    background:  hsl(281, 66%, 24%);
+    box-shadow:0 10px 15px  hsl(285, 91%, 52%)
+}
+.equal{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 30px 0 0 0;
+    gap: 20px;
+    justify-content: center;
+}
+.equal .c{
+    background: hsl(225, 31%, 62%);
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 3);
+    padding: 20px 0;
+    cursor: pointer;
+    width: 50%;
+    font-size: 20px;
+    font-weight: bold;
+}
+body[data-theme="light"] .inp input{
+    background: hsl(0, 0%, 100%);
+    color: hsl(0, 0%, 0%);
+}
+
+body[data-theme="dark"] .inp input{
+    background: hsl(221, 27%, 31%);
+    color: hsl(0, 0%, 100%);
+}
+
+body[data-theme="blue"] .inp input{
+    background: hsla(268, 74%, 9%, 0.904);
+    color: hsl(52, 100%, 62%);
+}
+.equal .c:hover{
+  background: #8baef0;
+  transform: scale(1.1);
+  transition-delay: 0.2s;
+}
+.equal .resalt{
+    background: hsl(14, 100%, 51%);
+    color: #ffffff;
+    border: none;
+    width: 50%;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 3);
+    padding: 20px 0;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+}
+body[data-theme="light"] .inp input{
+    background: hsl(0, 0%, 100%);
+    color: hsl(0, 0%, 0%);
+}
+
+body[data-theme="dark"] .inp input{
+    background: hsl(221, 27%, 31%);
+    color: hsl(0, 0%, 100%);
+}
+
+body[data-theme="blue"] .inp input{
+    background: hsla(268, 74%, 9%, 0.904);
+    color: hsl(52, 100%, 62%);
+}
+
+.equal .resalt:hover{
+  background: hsl(14, 94%, 56%);
+  transform: scale(1.1);
+  transition-delay: 0.2s;
+}
+@media (max-width: 768px) {
+
+.main-contanier{
+    width: 350px;
+    height: auto;
+    margin-top: 50px;
+}
+.head{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+.head h2{
+    color: #ffffff;
+    font-size: 30px ;
+    font-weight: bold;
+}
+
+.inp input{
+    padding: 40px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    width: 100%;
+    font-size: 50px;
+    font-weight: 900;
+}
+
+.Calculator{
+    display: grid;
+    grid-template-columns:repeat(4,1fr);
+    gap: 10px;
+}
+.Calculator .btn{
+    background: #f3ecec;
+    color: black;
+    border-radius: 5px;
+    border: none;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 20px 0;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 3);
+}
+
+.Calculator .btn:hover{
+  background: #ffffff;
+  transform: scale(1.02);
+  transition-delay: 0.2s;
+}
+.del{
+    background: hsl(225, 31%, 62%);
+    color: hsl(60, 10%, 19%);
+    border-radius: 5px;
+    border: none;
+    font-size: 20px;
+    font-weight: 900;
+    padding: 20px 0;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 3);
+}
+
+.equal{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 30px 0 0 0;
+    gap: 20px;
+    justify-content: center;
+}
+.equal .c{
+    background: hsl(225, 31%, 62%);
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 3);
+    padding: 20px 0;
+    cursor: pointer;
+    width: 50%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.equal .c:hover{
+  background: #8baef0;
+  transform: scale(1.1);
+  transition-delay: 0.2s;
+}
+.equal .resalt{
+    background: hsl(14, 100%, 51%);
+    color: #ffffff;
+    border: none;
+    width: 50%;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 3);
+    padding: 20px 0;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+}
+.equal .resalt:hover{
+  background: hsl(14, 94%, 56%);
+  transform: scale(1.1);
+  transition-delay: 0.2s;
+}
+}
