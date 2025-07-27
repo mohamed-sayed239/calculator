@@ -1,453 +1,311 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+:root {
+  /* Light Theme */
+  --light-bg: hsl(0, 0%, 90%);
+  --light-text: hsl(60, 10%, 19%);
+  --light-display-bg: hsl(0, 0%, 100%);
+  --light-display-text: hsl(0, 0%, 0%);
+  --light-btn-bg: hsl(45, 7%, 89%);
+  --light-btn-shadow: hsl(35, 11%, 61%);
+  --light-del-bg: hsl(185, 42%, 37%);
+  --light-del-shadow: hsl(185, 58%, 25%);
+  --light-equal-bg: hsl(25, 98%, 40%);
+  
+  /* Dark Theme */
+  --dark-bg: hsl(222, 26%, 20%);
+  --dark-text: hsl(221, 14%, 80%);
+  --dark-display-bg: hsl(224, 32%, 30%);
+  --dark-btn-bg: hsl(30, 25%, 89%);
+  --dark-btn-shadow: hsl(28, 16%, 65%);
+  --dark-del-bg: hsl(225, 21%, 49%);
+  --dark-del-shadow: hsl(224, 28%, 35%);
+  --dark-equal-bg: hsl(6, 63%, 50%);
+  
+  /* Blue Theme */
+  --blue-bg: hsl(268, 75%, 9%);
+  --blue-text: hsl(52, 100%, 62%);
+  --blue-display-bg: hsl(268, 71%, 12%);
+  --blue-btn-bg: hsl(268, 47%, 21%);
+  --blue-btn-shadow: hsl(290, 70%, 36%);
+  --blue-del-bg: hsl(281, 89%, 26%);
+  --blue-del-shadow: hsl(285, 91%, 52%);
+  --blue-equal-bg: hsl(176, 100%, 44%);
+  
+  /* Common */
+  --transition: all 0.3s ease;
 }
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
-  body[data-theme="light"] {
-    background: hsl(0, 0%, 90%);
-    color: hsl(60, 10%, 19%);
+body {
+  font-family: 'Cairo', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: var(--dark-bg);
+  color: var(--dark-text);
+  transition: var(--transition);
+}
+
+/* Theme Styles */
+body[data-theme="light"] {
+  background: var(--light-bg);
+  color: var(--light-text);
 }
 
 body[data-theme="dark"] {
-    background: hsl(222, 26%, 31%);
-    color: hsl(221, 14%, 31%);
+  background: var(--dark-bg);
+  color: var(--dark-text);
 }
 
 body[data-theme="blue"] {
-    background: hsl(268, 75%, 9%);
-    color: hsl(52, 100%, 62%);
+  background: var(--blue-bg);
+  color: var(--blue-text);
 }
 
+.main-container {
+  width: 600px;
+  margin-top: 50px;
+}
 
 .head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .head h2 {
-    font-size: 24px;
+  font-size: 30px;
+  font-weight: bold;
 }
 
-/* زر التبديل بثلاث حالات */
+/* Theme Switch */
 .theme-switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 25px;
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 25px;
 }
 
 .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: hsl(223, 31%, 20%);
-    transition: 0.3s;
-    border-radius: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 5px;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: hsla(0, 0%, 38%, 0.116);
+  transition: var(--transition);
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
 }
 
-/* الدائرة المتحركة */
 .slider span {
-    width: 15px;
-    height: 15px;
-    background: hsl(6, 63%, 50%);
-    border-radius: 50%;
-    transition: 0.3s;
-    position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  transition: var(--transition);
+  position: absolute;
 }
 
-/* تحديد مواقع الدائرة حسب الوضع */
 .slider[data-position="0"] span {
-    left: 5px;
-    background:  hsl(25, 98%, 40%);
+  left: 5px;
+  background: var(--light-equal-bg);
 }
 
 .slider[data-position="1"] span {
-    left: 20px;
-    background: hsl(6, 63%, 50%);
-
+  left: 20px;
+  background: var(--dark-equal-bg);
 }
 
 .slider[data-position="2"] span {
-    left: 40px;
-    background:hsl(176, 100%, 44%);
+  left: 40px;
+  background: var(--blue-equal-bg);
 }
 
-.slider[data-position="0"] {
-    background: hsla(0, 0%, 38%, 0.116);
+/* Input Display */
+.inp input {
+  padding: 30px;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  font-size: 50px;
+  font-weight: 900;
+  text-align: right;
+  outline: none;
+  transition: var(--transition);
+  background: var(--dark-display-bg);
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.slider[data-position="1"] {
-    background: hsla(0, 0%, 38%, 0.116);
+body[data-theme="light"] .inp input {
+  background: var(--light-display-bg);
+  color: var(--light-display-text);
 }
 
-.slider[data-position="2"] {
-    background: hsla(0, 0%, 38%, 0.116);
+body[data-theme="dark"] .inp input {
+  background: var(--dark-display-bg);
+  color: white;
 }
 
-
-  
-body{
-  background:  hsl(224, 27%, 34%);
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    display: flex;
-}
-.main-contanier{
-    width: 600px;
-    height: 100%;
-    margin-top: 50px;
-}
-.head{
-    display: flex;
-    align-items: center;
-    margin: 10px 0;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-}
-.head h2{
-    color: #ffffff;
-    font-size: 30px ;
-    font-weight: bold;
-}
-body[data-theme="light"] .head h2{   
-    color: hsl(60, 10%, 19%);
+body[data-theme="blue"] .inp input {
+  background: var(--blue-display-bg);
+  color: var(--blue-text);
 }
 
-body[data-theme="dark"] .head h2{
-    color: hsl(221, 14%, 31%);
+/* Calculator Body */
+.content {
+  background: hsl(223, 31%, 20%);
+  margin: 30px 0;
+  padding: 30px;
+  border-radius: 20px;
+  transition: var(--transition);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-body[data-theme="blue"] .head h2{
-    color: hsl(52, 100%, 62%);
+body[data-theme="light"] .content {
+  background: hsl(0, 0%, 93%);
 }
 
-.inp input{
-    padding: 40px;
-    outline: none;
-    border: none;
-    border-radius: 10px;
-    color: #ffffff;
-    width: 100%;
-    font-size: 50px;
-    font-weight: 900;
+body[data-theme="blue"] .content {
+  background: var(--blue-del-bg);
 }
 
-body[data-theme="light"] .inp input{
-    background: hsl(0, 0%, 100%)!important;
-    color: hsl(0, 0%, 0%)!important;
+/* Calculator Buttons */
+.calculator {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 20px;
 }
 
-body[data-theme="dark"] .inp input{
-    background:  hsl(225, 21%, 49%)!important;
-    color: hsl(0, 0%, 100%)!important;
+.btn, .del, .c, .result {
+  border: none;
+  border-radius: 10px;
+  font-size: 30px;
+  font-weight: 900;
+  padding: 15px 0;
+  cursor: pointer;
+  transition: var(--transition);
+  transform-origin: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-body[data-theme="blue"] .inp input{
-    background: hsl(281, 25%, 37%)!important;
-    color: hsl(52, 100%, 62%)!important;
-}
-.content{
-    background:hsla(223, 31%, 20%, 0.658) ;
-    margin: 30px 0;
-    padding: 40px;
-    border-radius: 20px;
-}
-body[data-theme="light"] .content{
-    background:hsl(0, 0%, 93%);
-    color: hsl(60, 10%, 19%);
+.btn {
+  background: var(--dark-btn-bg);
+  color: var(--dark-text);
 }
 
-body[data-theme="dark"] .content{
-    background:  hsl(225, 21%, 49%);
-    color: hsl(221, 14%, 31%);
+.del, .c {
+  background: var(--dark-del-bg);
+  color: white;
+  font-size: 24px;
+  text-transform: uppercase;
 }
 
-body[data-theme="blue"] .content{
-    background: hsl(281, 89%, 26%);
-    color: hsl(52, 100%, 62%);
+.result {
+  background: var(--dark-equal-bg);
+  color: white;
 }
 
-.Calculator{
-    display: grid;
-    grid-template-columns:repeat(4,1fr);
-    gap: 20px;
-}
-.Calculator .btn{
-    background: #f3ecec;
-    color: black;
-    border-radius: 5px;
-    border: none;
-    font-size: 30px;
-    font-weight: 900;
-    padding: 20px 0;
-    cursor: pointer;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 3);
-}
-body[data-theme="light"] .Calculator .btn{   
-    color: hsl(60, 10%, 19%);
-    background:hsl(45, 7%, 89%);
-    box-shadow: 0 8px 12px  hsl(35, 11%, 61%);
-}
-
-body[data-theme="dark"] .Calculator .btn{
-    color: hsl(221, 14%, 31%);
-    background:hsl(30, 25%, 89%);
-    box-shadow: 0 8px 12px  hsl(28, 16%, 65%);
-}
-
-body[data-theme="blue"] .Calculator .btn{
-    color: hsl(52, 100%, 62%);
-    background: hsl(268, 47%, 21%);
-    box-shadow: 0 8px 12px  hsl(290, 70%, 36%);
-}
-.Calculator .btn:hover{
-  background: #ffffff;
+/* Hover Effects */
+.btn:hover, .del:hover, .c:hover, .result:hover {
   transform: scale(1.05);
-  transition-delay: 0.2s;
-}
-.del{
-    background: hsl(225, 31%, 62%);
-    color: hsl(60, 10%, 19%);
-    border-radius: 5px;
-    border: none;
-    font-size: 30px;
-    font-weight: 900;
-    padding: 20px 0;
-    cursor: pointer;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 3);
-}
-body[data-theme="light"] del{   
-    color: hsl(60, 10%, 19%);
-    background:hsl(185, 42%, 37%);
-    box-shadow: 0 8px 15px  hsl(185, 58%, 25%);
-    
 }
 
-body[data-theme="dark"] del{
-    color: hsl(221, 14%, 31%);
-    background:hsl(225, 21%, 49%);
-    box-shadow: 0 8px 15px  hsl(224, 28%, 35%);
+.btn:active, .del:active, .c:active, .result:active {
+  transform: scale(0.98);
 }
 
-body[data-theme="blue"] del{
-    color: hsl(52, 100%, 62%);
-    background:  hsl(281, 89%, 26%);
-    box-shadow:0 8px 15px  hsl(285, 91%, 52%)
-}
-.del:hover{
-  background: #81a6eb;
-  transform: scale(1.05);
-  transition-delay: 0.2s;
-}
-body[data-theme="light"] del:hover{   
-    color: hsl(60, 10%, 19%);
-    background:hsl(185, 34%, 35%);
-    box-shadow: 0 10px 15px  hsl(185, 58%, 25%);
-    
+/* Theme-specific Button Styles */
+body[data-theme="light"] .btn {
+  background: var(--light-btn-bg);
+  color: var(--light-text);
+  box-shadow: 0 4px 8px var(--light-btn-shadow);
 }
 
-body[data-theme="dark"] del:hover{
-    color: hsl(221, 14%, 31%);
-    background:hsl(225, 18%, 31%);
-    box-shadow: 0 10px 15px  hsl(224, 28%, 35%);
+body[data-theme="light"] .del, 
+body[data-theme="light"] .c {
+  background: var(--light-del-bg);
+  box-shadow: 0 4px 8px var(--light-del-shadow);
 }
 
-body[data-theme="blue"] del:hover{
-    color: hsl(52, 100%, 62%);
-    background:  hsl(281, 66%, 24%);
-    box-shadow:0 10px 15px  hsl(285, 91%, 52%)
-}
-.equal{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    margin: 30px 0 0 0;
-    gap: 20px;
-    justify-content: center;
-}
-.equal .c{
-    background: hsl(225, 31%, 62%);
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 3);
-    padding: 20px 0;
-    cursor: pointer;
-    width: 50%;
-    font-size: 20px;
-    font-weight: bold;
-}
-body[data-theme="light"] .inp input{
-    background: hsl(0, 0%, 100%);
-    color: hsl(0, 0%, 0%);
+body[data-theme="blue"] .btn {
+  background: var(--blue-btn-bg);
+  color: var(--blue-text);
+  box-shadow: 0 4px 8px var(--blue-btn-shadow);
 }
 
-body[data-theme="dark"] .inp input{
-    background: hsl(221, 27%, 31%);
-    color: hsl(0, 0%, 100%);
+body[data-theme="blue"] .del,
+body[data-theme="blue"] .c {
+  background: var(--blue-del-bg);
+  box-shadow: 0 4px 8px var(--blue-del-shadow);
 }
 
-body[data-theme="blue"] .inp input{
-    background: hsla(268, 74%, 9%, 0.904);
-    color: hsl(52, 100%, 62%);
-}
-.equal .c:hover{
-  background: #8baef0;
-  transform: scale(1.1);
-  transition-delay: 0.2s;
-}
-.equal .resalt{
-    background: hsl(14, 100%, 51%);
-    color: #ffffff;
-    border: none;
-    width: 50%;
-    border-radius: 5px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 3);
-    padding: 20px 0;
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: bold;
-}
-body[data-theme="light"] .inp input{
-    background: hsl(0, 0%, 100%);
-    color: hsl(0, 0%, 0%);
+body[data-theme="blue"] .result {
+  background: var(--blue-equal-bg);
 }
 
-body[data-theme="dark"] .inp input{
-    background: hsl(221, 27%, 31%);
-    color: hsl(0, 0%, 100%);
+/* Equal/Reset Row */
+.equal {
+  display: flex;
+  gap: 20px;
 }
 
-body[data-theme="blue"] .inp input{
-    background: hsla(268, 74%, 9%, 0.904);
-    color: hsl(52, 100%, 62%);
+.equal .c, .equal .result {
+  width: 50%;
 }
 
-.equal .resalt:hover{
-  background: hsl(14, 94%, 56%);
-  transform: scale(1.1);
-  transition-delay: 0.2s;
-}
+/* Responsive Design */
 @media (max-width: 768px) {
-
-.main-contanier{
+  .main-container {
     width: 350px;
-    height: auto;
-    margin-top: 50px;
-}
-.head{
-    display: flex;
-    align-items: center;
-    margin: 10px 0;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-}
-.head h2{
-    color: #ffffff;
-    font-size: 30px ;
-    font-weight: bold;
-}
-
-.inp input{
-    padding: 40px;
-    outline: none;
-    border: none;
-    border-radius: 10px;
-    color: #ffffff;
-    width: 100%;
-    font-size: 50px;
-    font-weight: 900;
-}
-
-.Calculator{
-    display: grid;
-    grid-template-columns:repeat(4,1fr);
-    gap: 10px;
-}
-.Calculator .btn{
-    background: #f3ecec;
-    color: black;
-    border-radius: 5px;
-    border: none;
+    margin-top: 30px;
+  }
+  
+  .inp input {
+    font-size: 32px;
+    padding: 25px;
+  }
+  
+  .content {
+    padding: 20px;
+  }
+  
+  .calculator {
+    gap: 15px;
+  }
+  
+  .btn, .del, .c, .result {
+    font-size: 24px;
+    padding: 12px 0;
+  }
+  
+  .del, .c {
     font-size: 20px;
-    font-weight: 700;
-    padding: 20px 0;
-    cursor: pointer;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 3);
+  }
 }
 
-.Calculator .btn:hover{
-  background: #ffffff;
-  transform: scale(1.02);
-  transition-delay: 0.2s;
-}
-.del{
-    background: hsl(225, 31%, 62%);
-    color: hsl(60, 10%, 19%);
-    border-radius: 5px;
-    border: none;
+@media (max-width: 480px) {
+  .main-container {
+    width: 90%;
+  }
+  
+  .inp input {
+    font-size: 28px;
+    padding: 20px;
+  }
+  
+  .btn, .del, .c, .result {
     font-size: 20px;
-    font-weight: 900;
-    padding: 20px 0;
-    cursor: pointer;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 3);
-}
-
-.equal{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    margin: 30px 0 0 0;
-    gap: 20px;
-    justify-content: center;
-}
-.equal .c{
-    background: hsl(225, 31%, 62%);
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 3);
-    padding: 20px 0;
-    cursor: pointer;
-    width: 50%;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.equal .c:hover{
-  background: #8baef0;
-  transform: scale(1.1);
-  transition-delay: 0.2s;
-}
-.equal .resalt{
-    background: hsl(14, 100%, 51%);
-    color: #ffffff;
-    border: none;
-    width: 50%;
-    border-radius: 5px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 3);
-    padding: 20px 0;
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: bold;
-}
-.equal .resalt:hover{
-  background: hsl(14, 94%, 56%);
-  transform: scale(1.1);
-  transition-delay: 0.2s;
-}
+  }
 }
